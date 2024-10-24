@@ -5,6 +5,12 @@ import { Context } from '../../context/context'
 const Main = () => {
 
   const {onSent,recentPrompt,showResult,loading,result,setInput,input}=useContext(Context)
+  const handleEnter= async (e)=>{
+    if(e.key=='Enter'){
+      await onSent();
+    }
+  }
+
   return (
     <div className='main'>
         <div className="nav">
@@ -58,8 +64,8 @@ const Main = () => {
           </>}
             
             <div className="main-bottom">
-              <div className="search-box">
-                <input onChange={(e)=>setInput(e.target.value)} value={input} type="text" placeholder='Enter a prompt here'/>
+              <div className="search-box" >
+                <input onChange={(e)=>setInput(e.target.value)} onKeyDown={handleEnter} value={input} type="text" placeholder='Enter a prompt here'/>
                 <div className='search-icons'>
                   <img onClick={onSent} src="sent.png" alt="" />
                 </div>
