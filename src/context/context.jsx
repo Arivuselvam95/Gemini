@@ -31,12 +31,12 @@ import run from "../config/gemini";
         let response;
         if(typeof prompt==="string" && prompt!==undefined){
             
-            response=await run(prompt,history);
+            response=await run(prompt);
             setRecentPrompt(prompt);
         }else{
             setRecentPrompt(input);
             setPrevPrompt(prev=>[...prev,input]);
-            response = await run(input,history);
+            response = await run(input);
         }
         setHistory(his=>[...his,
             {

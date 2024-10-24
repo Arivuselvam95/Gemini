@@ -22,7 +22,7 @@ import {
     // responseMimeType: "text/plain",
   };
   
-  async function run(inputPrompt,chatHistory) {
+  async function run(inputPrompt) {
     const chatSession = model.startChat({
       generationConfig,
       history: [
@@ -38,7 +38,7 @@ import {
             {text: "Please provide me with the content you'd like me to add emojis to!  I need the text first. 😊\n"},
           ],
         },
-        ...chatHistory
+        
       ],
     });
   
