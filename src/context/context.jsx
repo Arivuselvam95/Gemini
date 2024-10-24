@@ -11,7 +11,7 @@ import run from "../config/gemini";
     const [showResult,setShowResult] =useState(false);
     const [loading,setLoading]=useState(false);
     const [result,setResult]=useState("");
-
+    const [history,setHistory]=useState([])
     const DelayPara=(index,nextword)=>{
         setTimeout(function(){
             setResult(prev=>prev+nextword);
@@ -31,14 +31,28 @@ import run from "../config/gemini";
         let response;
         if(typeof prompt==="string" && prompt!==undefined){
             
-            response=await run(prompt);
+            response=await run(prompt,history);
             setRecentPrompt(prompt);
         }else{
             setRecentPrompt(input);
             setPrevPrompt(prev=>[...prev,input]);
-            response = await run(input);
+            response = await run(input,history);
         }
-
+        setHistory(his=>[...his,
+            {
+                role: "user",
+                parts: [
+                  {text: input},
+                ],
+              },
+              {
+                role: "model",
+                parts: [
+                  {text: response},
+                ],
+              }
+            ]
+        )
         let ResponseArray=response.split("**");
         let newResponse="";
         for(let i=0;i<ResponseArray.length;i++){
@@ -49,7 +63,9 @@ import run from "../config/gemini";
             }
         }
 
-        newResponse=newResponse.split("*").join("</br>");
+        newResponse=newResponse.split("**").join("</br>");
+        newResponse=newResponse.split("\n").join("</br>");
+        newResponse=newResponse.split("</br></br>").join("</br>");
         let typingResponse=newResponse.split(" ");
         for(let index=0;index<typingResponse.length;index++){
             const word=typingResponse[index];

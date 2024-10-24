@@ -87,9 +87,11 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    background-color: #f0f4f9;
+    background-color: #e3e4e6;
     margin: 10px 20px;
     border-radius: 50px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 .search-box .search-icons{
     display: flex;
@@ -167,7 +169,7 @@
     line-height: 1.8;
 }
 
-@media (max-width:600px){
+@media (max-width:450px){
     .main-bottom input{
         flex: none;
         width: 150px;
@@ -175,10 +177,23 @@
     .main-bottom img{
         width: 20px;
     }
+    .greet>p{
+        font-size: 2rem ;
+    }
     .search-box{
         padding: 5px 10px;
     }
     .search-box div{
         gap: 5px;
+    }
+    .card{
+        display: none;
+    }
+    .search-box input{
+        font-size: 0.8rem;
+    }
+    .result-data p{
+        font-size: 0.9rem;
+        line-height: 1.6rem;
     }
 }

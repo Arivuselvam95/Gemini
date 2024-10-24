@@ -26,6 +26,7 @@
     font-size: 14px;
     color: grey;
     cursor: pointer;
+
 }
 .Sidebar .recent{
     display: flex;
@@ -41,7 +42,7 @@
     display: flex; 
     align-items: start;
     gap: 10px;
-    padding: 10px 40px 10px 10px;   
+    padding: 10px 10px 10px 10px;   
     border-radius: 50px;
     color: rgb(81, 80, 80);
     cursor: pointer;
@@ -55,4 +56,13 @@
 }
 .bottom-item{
     padding-right: 10px;
+}
+@media (max-width:450px){
+    .Sidebar{
+       width: fit-content;
+       
+    }
+    .Sidebar .new-chat{
+        width: fit-content;
+    }
 }

@@ -28,7 +28,7 @@ const Sidebar = () => {
                         return(
                             <div onClick={()=>loadPrompt(item)} key={index} className="recent-entry">
                                 <img src="message.png" alt="" />
-                                <p >{item.slice(0,18)}...</p>
+                                <p >{item.slice(0,10)}...</p>
                             </div>
                         )
                     })}
